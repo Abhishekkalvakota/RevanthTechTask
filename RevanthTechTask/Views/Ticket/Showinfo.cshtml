@@ -1,0 +1,138 @@
+﻿
+@model RevanthTechTask.Models.tblTicket
+
+@if (TempData["Message"] != null)
+{
+
+    <script>
+        // Function to hide the message after a delay
+        setTimeout(function () {
+            var messageElement = document.getElementById("message");
+            if (messageElement) {
+                messageElement.style.display = "none";
+            }
+        }, 3000); // Adjust the duration as needed
+    </script>
+
+    <style>
+        /* Style for the message container */
+        #message {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        /* Style for success message */
+        .success-message {
+            background-color: #dff0d8; /* Green background color for success */
+            color: #3c763d; /* Dark green text color for success */
+        }
+    </style>
+
+   
+    <div class="row justify-content-center">
+        <div id="message" class="success-message col-md-3 mx-auto">
+            @TempData["Message"]
+        </div>
+    </div>
+
+    <br />
+
+}
+
+
+
+@using (Html.BeginForm("Edit", "Ticket", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+
+
+        @Html.ActionLink("Go to Ticket Index", "Index", "Ticket", null, new { @class = "btn btn-primary" })
+
+        <a href="@Url.Action("Registration","Ticket")" class="btn btn-success">Add  Another Ticket <i class="fa fa-plus"></i></a>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Id">ID</label>
+                    @Html.TextBoxFor(model => model.Id, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Userr">User</label>
+                    @Html.TextBoxFor(model => model.Userr, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Category">Category</label>
+                    @Html.DropDownListFor(model => model.Category, ViewBag.Categories as SelectList, "Select Category", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="ShortDescription">Short Description</label>
+                    @Html.TextBoxFor(model => model.ShortDescription, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Datee">Select Date:</label>
+
+                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                        <input class="form-control" type="text" name="Datee" />
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="AdditionalInfo">Additional Info</label>
+                    @Html.TextBoxFor(model => model.AdditionalInfo, new { @class = "form-control" })
+                </div>
+
+
+
+            </div>
+            <div class="col-md-6">
+
+
+                <div class="form-group">
+                    <label for="RaisedBy">Raised By</label>
+                    @Html.TextBoxFor(model => model.RaisedBy, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Priorityy">Priority</label>
+                    @Html.DropDownListFor(model => model.Priorityy, (SelectList)ViewBag.Priorities, "Select Priority", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="AssignmentType">Assignment Type</label>
+                    @Html.DropDownListFor(model => model.AssignmentType, (SelectList)ViewBag.AssignmentTypes, "Select Assignment Type", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Statuss">Status</label>
+                    @Html.DropDownListFor(model => model.Statuss, (SelectList)ViewBag.Statuses, "Select Status", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="ContactType">Contact Type</label>
+                    @Html.DropDownListFor(model => model.ContactType, (SelectList)ViewBag.ContactTypes, "Select Contact Type", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="AssigneeGroup">Assignee Group</label>
+                    @Html.DropDownListFor(model => model.AssigneeGroup, (SelectList)ViewBag.AssigneeGroups, "Select Assignee Group", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" value="Edit Ticket" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+

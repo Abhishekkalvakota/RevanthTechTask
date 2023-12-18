@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RevanthTaskDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblTicket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Userr" Type="nvarchar" MaxLength="255" />
+          <Property Name="Category" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Datee" Type="date" />
+          <Property Name="AdditionalInfo" Type="nvarchar(max)" />
+          <Property Name="RaisedBy" Type="nvarchar" MaxLength="255" />
+          <Property Name="Priorityy" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssignmentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Statuss" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactType" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssigneeGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="AssigneeTo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="RevanthTaskDBModelStoreContainer">
+          <EntitySet Name="tblTicket" EntityType="Self.tblTicket" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RevanthTaskDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblTicket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Userr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Datee" Type="DateTime" Precision="0" />
+          <Property Name="AdditionalInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RaisedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Priorityy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssignmentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Statuss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssigneeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AssigneeTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="TicketDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblTickets" EntityType="Self.tblTicket" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RevanthTaskDBModelStoreContainer" CdmEntityContainer="TicketDBEntities">
+          <EntitySetMapping Name="tblTickets">
+            <EntityTypeMapping TypeName="RevanthTaskDBModel.tblTicket">
+              <MappingFragment StoreEntitySet="tblTicket">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Userr" ColumnName="Userr" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Datee" ColumnName="Datee" />
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+                <ScalarProperty Name="RaisedBy" ColumnName="RaisedBy" />
+                <ScalarProperty Name="Priorityy" ColumnName="Priorityy" />
+                <ScalarProperty Name="AssignmentType" ColumnName="AssignmentType" />
+                <ScalarProperty Name="Statuss" ColumnName="Statuss" />
+                <ScalarProperty Name="ContactType" ColumnName="ContactType" />
+                <ScalarProperty Name="AssigneeGroup" ColumnName="AssigneeGroup" />
+                <ScalarProperty Name="AssigneeTo" ColumnName="AssigneeTo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

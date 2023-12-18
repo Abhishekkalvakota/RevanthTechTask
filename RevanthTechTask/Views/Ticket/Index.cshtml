@@ -1,0 +1,100 @@
+﻿@model List<RevanthTechTask.Models.tblTicket>
+
+
+@if (TempData["Message"] != null)
+{
+    <script>
+       '@TempData["Message"]';
+    </script>
+}
+
+<a href="@Url.Action("Registration","Ticket")" class="btn btn-success">Add Ticket</a>
+<br />
+<br />
+<br />
+
+
+<table class="table table-hover table-bordered table-dark" id="dtExample">
+    <thead>
+        <tr>
+            <th>Ticket Id</th>
+            <th>User</th>
+            <th>Category</th>
+            <th>Short Description</th>
+            <th>Date</th>
+            <th>Additional Info</th>
+            <th>Raised By</th>
+            <th>Priority</th>
+            <th>Assignment Type</th>
+            <th>Status</th>
+            <th>Contact Type</th>
+            <th>Assignee Group</th>
+            <th>Assignee To</th>
+            <th class="col-xs-4">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Userr</td>
+                <td>@item.Category</td>
+                <td>@item.ShortDescription</td>
+                <td>@item.Datee</td>
+                <td>@item.AdditionalInfo</td>
+                <td>@item.RaisedBy</td>
+                <td>@item.Priorityy</td>
+                <td>@item.AssignmentType</td>
+                <td>@item.Statuss</td>
+                <td>@item.ContactType</td>
+                <td>@item.AssigneeGroup</td>
+                <td>@item.AssigneeTo</td>
+                <td>
+
+                    @*<button class="btn btn-info">
+                        @Html.ActionLink("Edit", "Edit", "Ticket", new { @id = item.Id }, new
+                        {
+                            htmlAttributes = new { @style = "color: white; text-decoration: none;" }
+                        })
+                    </button>*@
+
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation_@item.Id">
+                        Delete
+                    </button>
+
+                    <div class="modal fade" id="deleteConfirmation_@item.Id" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteConfirmationLabel">Delete Confirmation</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this record?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    @Html.ActionLink("Delete", "Delete", "Ticket", new { @id = item.Id }, new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            debugger;
+            $('#dtExample').DataTable();
+        });
+    </script>
+    }
+

@@ -1,0 +1,99 @@
+﻿@model RevanthTechTask.Models.tblTicket
+
+@using (Html.BeginForm("Registration", "Ticket", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+
+<div class="container">
+    @Html.ActionLink("Go to Ticket Index", "Index", "Ticket", null, new { @class = "btn btn-primary" })
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                <label for="Userr">User</label>
+                @Html.TextBoxFor(model => model.Userr, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Userr, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Category">Category</label>
+                @Html.DropDownListFor(model => model.Category, (SelectList)ViewBag.Categories, "Select Category", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="ShortDescription">Short Description</label>
+                @Html.TextBoxFor(model => model.ShortDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Datee">Select Date:</label>
+                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                    <input class="form-control" type="text" name="Datee" />
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="AdditionalInfo">Additional Info</label>
+                @Html.TextBoxFor(model => model.AdditionalInfo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AdditionalInfo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="RaisedBy">Raised by</label>
+                @Html.TextBoxFor(model => model.RaisedBy, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RaisedBy, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            
+
+            <div class="form-group">
+                <label for="Priorityy">Priority </label>
+                @Html.DropDownListFor(model => model.Priorityy, (SelectList)ViewBag.Priorities, "Select Priority", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Priorityy, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="AssignmentType">Assignment Type</label>
+                @Html.DropDownListFor(model => model.AssignmentType, (SelectList)ViewBag.AssignmentTypes, "Select Assignment Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AssignmentType, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Statuss">Status</label>
+                @Html.DropDownListFor(model => model.Statuss, (SelectList)ViewBag.Statuses, "Select Status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Statuss, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="ContactType">Contact Type</label>
+                @Html.DropDownListFor(model => model.ContactType, (SelectList)ViewBag.ContactTypes, "Select Contact Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContactType, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="AssigneeGroup">Assignee Group</label>
+                @Html.DropDownListFor(model => model.AssigneeGroup, (SelectList)ViewBag.AssigneeGroups, "Select Assignee Group", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AssigneeGroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" value="Add Ticket" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+
+}
+
